@@ -146,21 +146,6 @@ headers = ['filename', 'word_count']
 
 
 
-def count_words(text):
-    """
-    Подсчитывает количество слов в тексте.
-
-    Args:
-        text (str): Текст для анализа
-
-    Returns:
-        int: Количество слов
-    """
-    if not text or text.isspace():
-        return 0
-    
-    words = text.split()
-    return len(words)
 
 
 
