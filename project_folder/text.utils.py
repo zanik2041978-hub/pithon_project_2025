@@ -77,7 +77,10 @@ def count_lines(text):
 
 
 def average_word_length(text):
-     """Возвращает среднюю длину слова в тексте (float)."""
+     """Возвращает среднюю длину слова в тексте (float).
+     
+     ДОПИСАТЬ аргументы и выводимые значения (проверить, нужно ли это...."
+     """
     if not text or not text.strip():
         return 0.0
     
