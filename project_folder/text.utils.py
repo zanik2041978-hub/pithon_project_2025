@@ -19,13 +19,6 @@ def read_file(filename):
         return None        
 
 
-def get_words(text):
-    """Возвращает список слов из текста (можно привести к нижнему регистру)."""
-    text = text.lower()
-    words = text.split()
-    return words
-
-
 def count_words(text): 
     """Считает количество слов"""
     count_1 = len(text.split())
