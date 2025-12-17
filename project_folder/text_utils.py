@@ -18,6 +18,27 @@ def count_words(text):
     count_1 = len(text.split())
     return count_1
 
+#почему-то у меня есть еще 1 функция "count_words", надо разобраться, какая подходит нам и оставить 1:
+
+
+def count_words(text):
+    """
+    Подсчитывает количество слов в тексте.
+
+    Args:
+        text (str): Текст для анализа
+
+    Returns:
+        int: Количество слов
+    """
+    if not text or text.isspace():
+        return 0
+    
+    words = text.split()
+    return len(words)
+
+
+
 def display_results(lines_count, words_count): 
     """Печатает результаты в 2-3 аккуратных строках"""
     print(f"Количество непустых строк: {lines_count}") 
@@ -33,3 +54,4 @@ if __name__ == "__main__" :
     lines = text.splitlines()
     two_lines = lines[:2]
     display_results(lines_count, words_count)
+
