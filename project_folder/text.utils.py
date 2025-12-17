@@ -72,7 +72,15 @@ def get_most_common_words(text, n=10):
     pass
 
 def count_lines(text):
-    pass
+    """Подсчитывает строки в тексте
+    Args: 
+        text (str): Текст для анализа
+
+    Returns: 
+        int: Количество строк
+    """
+    lines = t.split('\n')
+    return len(lines)
 
 
 def average_word_length(text):
