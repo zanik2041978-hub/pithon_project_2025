@@ -18,7 +18,7 @@ your_project_name/
 ├── text_utils.py        # Функции анализа текста
 ├── file_utils.py        # Функции работы с файлами
 ├── README.md            # Документация проекта
-└── PROJECT_REQUIREMENTS.md  # Этот файл (для справки)
+└── PROJECT_REQUIREMENTS.md  
 
 ## Как Запустить
 ```bash
