@@ -21,7 +21,7 @@ def get_files_in_folder(folder_path, extension='.txt'):
         list: Список имен файлов с указанным расширением
     """
     import os
-    files = [f for f in os.listdir('corpus', '.txt') if f.endswith(extension)] 
+    files = [f for f in os.listdir(folder_path) if f.endswith(extension)] 
     return files
         # добавить в список
 if __name__ == "__main__":
@@ -123,16 +123,6 @@ def write_csv_file(filepath, data, headers):
             f.write(','.join(str(v) for v in row) + '\n')
     return True
 
-print(write_csv_file('results/statistics.csv', data, headers))
-
-
-
-def write_text_file(filepath, content):
-    pass
-
-
-
-
 
 
 import os
@@ -143,10 +133,27 @@ data = [
     ['text_3.txt', 498]
 ]
 headers = ['filename', 'word_count']
+print(write_csv_file('results/statistics.csv', data, headers))
+
+
+def write_text_file(filepath, content):
+    pass
 
 
 
+def count_words(text):
+    """
+    Подсчитывает количество слов в тексте.
 
+    Args:
+        text (str): Текст для анализа
 
-
+    Returns:
+        int: Количество слов
+    """
+    if not text or text.isspace():
+        return 0
+    
+    words = text.split()
+    return len(words)
 
