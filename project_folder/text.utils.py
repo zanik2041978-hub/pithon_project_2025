@@ -8,25 +8,7 @@
 from collections import Counter
 
 
-def read_file(filename):
-    """Читает содержимое файла и возвращает строку. Возвращает None при ошибке."""
-    try:
-        with open(filename, "r", encoding='utf-8') as file:
-            content = file.read()
-            return content
-    except FileNotFoundError:
-        print(f"Файл не найден: {filename}")
-        return None        
-
-
-def count_words(text): 
-    """Считает количество слов"""
-    count_1 = len(text.split())
-    return count_1
-
-#почему-то у меня есть еще 1 функция "count_words", надо разобраться, какая подходит нам и оставить 1:
-
-def count_words(text):
+def word_count(text):
     """
     Подсчитывает количество слов в тексте.
 
@@ -57,12 +39,12 @@ def count_unique_words(words):
     unique_words = set(words)
     return len(unique_words)
 
-def calculate_ttr(text):
-    pass
+#def calculate_ttr(text):
+    #pass
 
 
-def get_most_common_words(text, n=10):
-    pass
+#def get_most_common_words(text, n=10):
+    #pass
 
 def count_lines(text):
     """Подсчитывает строки в тексте
@@ -77,10 +59,14 @@ def count_lines(text):
 
 
 def average_word_length(text):
-     """Возвращает среднюю длину слова в тексте (float).
-     
-     ДОПИСАТЬ аргументы и выводимые значения (проверить, нужно ли это...."
-     """
+    """Возвращает среднюю длину слова в тексте (float).
+    
+    Args:
+        text (str): Текст для анализа
+        
+    Returns:
+        float: Средняя длина слова
+    """
     if not text or not text.strip():
         return 0.0
     
