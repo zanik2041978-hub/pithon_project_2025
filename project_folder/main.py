@@ -1,5 +1,7 @@
 import os
-from project_folder.file_utils import get_files_in_folder, read_text_file
+from file_utils import get_files_in_folder, read_text_file
+from project_folder.text_utils import word_count
+from file_utils import write_csv_file, read_csv_file
 
 def main():
     """Главная функция программы."""
@@ -8,37 +10,24 @@ def main():
     print("=" * 60)
 
     # 1. Получить список файлов
-    corpus_folder = "corpus"
+    corpus_folder = 'corpus'
     print(f"\n🔍 Поиск файлов в папке '{corpus_folder}'...")
-    files = get_files_in_folder(corpus_folder)
-   
+
+    files = get_files_in_folder(corpus_folder, '.txt')  # ← ВАЖНО
+
     if not files:
         print("❌ Файлы не найдены!")
-    return
+        return
 
-    for i, name in enumerate(files, start=1): 
-        print(f" {i}. {name}")
-           
+    print(f"✅ Найдено файлов: {len(files)}")
 
-    # 2. Прочитать и показать содержимое каждого файла
-    print(f"\n{'=' * 60}")
-    print("📄 Содержимое файлов:")
-    print("=" * 60)
-
-    for filename in files:
-       path = os.path.join(corpus_folder, filename) 
-       content = read_text_file(path) 
-       print(f"Файл: {filename} {content}") 
+    print("\nСписок файлов:")
+    for i, filename in enumerate(files, start=1):
+        print(f"  {i}. {filename}")
 
     print("\n✅ Обработка завершена!")
 
 
-def count_words(text): 
-    """Считает количество слов"""
-    count_1 = len(text.split())
-    return count_1
-
-import os
 def analyze_corpus(corpus_folder):
     """
     Анализирует все тексты в папке, сохраняет результаты и выводит статистику.
@@ -46,7 +35,7 @@ def analyze_corpus(corpus_folder):
     Args:
         corpus_folder (str): Путь к папке с текстами (например, 'corpus')
     """
-    
+    # Часть 1: Анализ и сохранение
     txt_files = get_files_in_folder(corpus_folder)
     data = []
 
@@ -54,23 +43,27 @@ def analyze_corpus(corpus_folder):
         if filename.endswith('.txt'):
             file_path = os.path.join(corpus_folder, filename)
             text = read_text_file(file_path)
-            word_count_value = count_words(text)
+            word_count_value = word_count(text)
             data.append([filename, word_count_value])
 
     csv_path = 'results/statistics.csv'
     headers = ['filename', 'word_count']
     write_csv_file(csv_path, data, headers)
-    
-    loaded_data = read_csv_file(csv_path)  
+
+    # Часть 2: Загрузка и вывод статистики
+    loaded_data = read_csv_file(csv_path)  # возвращает список словарей
 
     print(f"Количество проанализированных файлов: {len(loaded_data)}")
-    
+
+    # Список файлов с количеством слов
     for row in loaded_data:
         print(f"{row['filename']}: {row['word_count']} слов")
 
+    # Общее количество слов
     total_words = sum(int(row['word_count']) for row in loaded_data)
     print(f"Общее количество слов в корпусе: {total_words}")
 
+    # Среднее количество слов на файл
     average_words = total_words / len(loaded_data) if loaded_data else 0
     print(f"Среднее количество слов на файл: {average_words:.2f}")
 
