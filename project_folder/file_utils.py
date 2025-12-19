@@ -131,7 +131,9 @@ def write_csv_file(filepath, data, headers):
             
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(','.join(str(h) for h in headers) + '\n')                      
-                                         
+             for row in data:
+                f.write(','.join(str(v) for v in row) + '\n')     
+                 
         print(f"Файл создан: {filepath}")
         return True
         
@@ -166,4 +168,5 @@ def write_text_file(filepath, content, encoding='utf-8'):
         
     except Exception as e:
         print(f"Возникла ошибка при создании файла'{filepath}': {e}")
+
         return False
