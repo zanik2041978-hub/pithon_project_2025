@@ -24,13 +24,11 @@ your_project_name/
 └── PROJECT_REQUIREMENTS.md  
 
 ## Как Запустить
-```bash
 python main.py
-bash
+
 
 # Результаты
 Результаты анлазиза находятся здесь: results/report.txt
 
 # Авторы
-
 Киреева Анастасия, Зайцева Наталья
