@@ -23,6 +23,9 @@ your_project_name/
 ├── README.md            # Документация проекта
 └── PROJECT_REQUIREMENTS.md  
 
+## Источники
+В качестве источников использовались собрания стихотворений Александра Галича на ImWerden.
+
 ## Как Запустить
 ```bash
 python main.py
